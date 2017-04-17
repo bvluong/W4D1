@@ -11,12 +11,12 @@
 class User < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true
 
-  has_many :artworks, dependent: :destroy
+  has_many :artworks, dependent: :destroy,
     primary_key: :id,
     foreign_key: :artist_id,
     class_name: "Artwork"
 
-  has_many :shares, dependent: :destroy 
+  has_many :shares, dependent: :destroy,
     primary_key: :id,
     foreign_key: :viewer_id,
     class_name: :ArtworkShare
