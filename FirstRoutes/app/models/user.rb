@@ -11,12 +11,14 @@
 class User < ApplicationRecord
   validates :user_name, presence: true, uniqueness: true
 
-  has_many :artworks, dependent: :destroy,
+  has_many :artworks,
+    dependent: :destroy,
     primary_key: :id,
     foreign_key: :artist_id,
     class_name: "Artwork"
 
-  has_many :shares, dependent: :destroy,
+  has_many :shares,
+    dependent: :destroy,
     primary_key: :id,
     foreign_key: :viewer_id,
     class_name: :ArtworkShare
@@ -24,4 +26,10 @@ class User < ApplicationRecord
   has_many :shared_artworks,
     through: :shares,
     source: :artwork
+
+  has_many :comments,
+    dependent: :destroy,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Comment
 end
