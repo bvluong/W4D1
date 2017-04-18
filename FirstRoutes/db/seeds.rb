@@ -12,11 +12,11 @@ user2 = User.create(user_name: 'brady')
 
 Artwork.destroy_all
 artwork1 = Artwork.create(title: 'Art', image_url: 'www.art.com', artist_id: user1.id)
-artwork1 = Artwork.create(title: 'Art 2', image_url: 'www.art.com/2', artist_id: user2.id)
+artwork2 = Artwork.create(title: 'Art 2', image_url: 'www.art.com/2', artist_id: user2.id)
+artwork3 = Artwork.create(title: 'Starry Night', image_url: 'www.starrynight.com', artist_id: user2.id)
 
 ArtworkShare.destroy_all
 artshare1 = ArtworkShare.create(viewer_id: user2.id, artwork_id: artwork1.id)
 
-
-# user1 = User.create(name: "bryant", email: "bryant@bryant.bryant")
-# user2 = User.create(name: "brady", email: "brady@brady.brady")
+Comment.destroy_all
+comment1 = Comment.create(artwork_id: artwork3.id, user_id: user1.id, body: 'this is mine')
